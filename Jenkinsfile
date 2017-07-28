@@ -1,5 +1,6 @@
 node {
     def app
+    docker.withEnv(['HOME='+pwd()])
 
     stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -10,8 +11,7 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        docker.withEnv(['HOME='+pwd()])
-        
+       
         app = docker.build("manchunyip/hellopyweb")
     }
 
