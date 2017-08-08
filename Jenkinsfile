@@ -18,7 +18,7 @@ node {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
 
-       echo 'steps test image' 
+       echo 'steps test image 2' 
         
     }
 
