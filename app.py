@@ -19,7 +19,7 @@ def hello():
     #provided_ips = web.ctx.env.get("HTTP_X_FORWARDED_FOR")
     provided_ips = request.remote_addr
 
-    html = "<h3>Hello hello {name}!</h3>" \
+    html = "<h3>Hello test hello {name}!</h3>" \
            "<b>Hostname:</b> {hostname}<br/>" \
            "<b>X-Forwarded-For:</b> {xff}<br/>" \
            "<b>Visits:</b> {visits}" 
