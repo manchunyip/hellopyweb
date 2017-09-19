@@ -1,9 +1,14 @@
 node {
     def app
-
+/*
     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: params.JP_DockerMechIdCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
     	usr = USERNAME
 		pswd = PASSWORD
+	}
+*/	
+     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'acr-dev-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+    	usr = USERNAME
+	pswd = PASSWORD
 	}
     
 
@@ -17,7 +22,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         
-        docker.withRegistry("https://nfdregistrydev.azurecr.io", params.JP_DockerMechIdCredential) {
+        docker.withRegistry("https://nfdregistrydev.azurecr.io", "acr-dev-credentials") {
 			sh "docker login -u ${usr} -p ${pswd} https://nfdregistrydev.azurecr.io"
             app = docker.build("manchunyip/hellopyweb")			
 		}
