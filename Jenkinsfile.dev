@@ -23,9 +23,9 @@ node {
          * docker build on the command line */
         
         docker.withRegistry("https://nfdregistrydev.azurecr.io", "acr-dev-credentials") {
-			sh "docker login -u ${usr} -p ${pswd} https://nfdregistrydev.azurecr.io"
+	    sh "set +x; docker login -u ${usr} -p ${pswd} https://nfdregistrydev.azurecr.io"
             app = docker.build("manchunyip/hellopyweb")			
-		}
+	}
         //app = docker.build("manchunyip/hellopyweb")
     }
 
